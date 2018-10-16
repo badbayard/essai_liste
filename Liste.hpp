@@ -1,6 +1,7 @@
 #ifndef LISTE_HPP
 #define LISTE_HPP
 #include <iostream>
+#include <iterator>
 
 template <class T> class cell 
 {
@@ -15,6 +16,18 @@ template <class T> class cell
             data = val; 
         }
         ~cell(){}
+
+        T getdata(){
+            return data;
+        }
+
+        cell<T>* getprecedent(){
+            return precedent;
+        }
+
+        cell<T>* getsuivant(){
+            return suivant;
+        }
 
 };
 
@@ -45,6 +58,7 @@ template <class T>class list
                 dernier->suivant = tmp;
                 dernier = tmp ;
             }
+            nbelem++;
         }
 
         void push_front(T val){
@@ -54,8 +68,31 @@ template <class T>class list
             premier = tmp;
             if(dernier == NULL){
                 dernier = tmp;
-            } 
+            }
+            nbelem++; 
         }
+
+        T front(){
+            return premier->getdata();
+        }
+
+        T back(){
+            return dernier->getdata();
+        }
+
+        int size(){
+            return nbelem;
+        }
+
+    class List_iterator{
+        private: 
+            T *obj;
+        public:
+            bool operator==(list l){
+                
+            }
+        
+    };
 };
 
 
